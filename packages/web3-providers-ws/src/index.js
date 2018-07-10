@@ -1,16 +1,13 @@
 /*
  This file is part of web3.js.
-
  web3.js is free software: you can redistribute it and/or modify
  it under the terms of the GNU Lesser General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
-
  web3.js is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU Lesser General Public License for more details.
-
  You should have received a copy of the GNU Lesser General Public License
  along with web3.js.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -70,7 +67,7 @@ var WebsocketProvider = function WebsocketProvider(url, options)  {
     // pass through with any additional headers supplied in constructor
     var parsedURL = parseURL(url);
     var headers = options.headers || {};
-    var protocol = options.protocol || undefined;
+    var protocol = options.protocol || [];
     if (parsedURL.username && parsedURL.password) {
         headers.authorization = 'Basic ' + _btoa(parsedURL.username + ':' + parsedURL.password);
     }
@@ -116,7 +113,6 @@ var WebsocketProvider = function WebsocketProvider(url, options)  {
 
 /**
  Will add the error and end event to timeout existing calls
-
  @method addDefaultEvents
  */
 WebsocketProvider.prototype.addDefaultEvents = function(){
@@ -140,7 +136,6 @@ WebsocketProvider.prototype.addDefaultEvents = function(){
 
 /**
  Will parse the response and make an array out of it.
-
  @method _parseResponse
  @param {String} data
  */
@@ -196,7 +191,6 @@ WebsocketProvider.prototype._parseResponse = function(data) {
 /**
  Adds a callback to the responseCallbacks object,
  which will be called if a response matching the response Id will arrive.
-
  @method _addResponseCallback
  */
 WebsocketProvider.prototype._addResponseCallback = function(payload, callback) {
@@ -221,7 +215,6 @@ WebsocketProvider.prototype._addResponseCallback = function(payload, callback) {
 
 /**
  Timeout all requests when the end/error event is fired
-
  @method _timeout
  */
 WebsocketProvider.prototype._timeout = function() {
@@ -264,7 +257,6 @@ WebsocketProvider.prototype.send = function (payload, callback) {
 
 /**
  Subscribes to provider events.provider
-
  @method on
  @param {String} type    'notifcation', 'connect', 'error', 'end' or 'data'
  @param {Function} callback   the callback to call
@@ -301,7 +293,6 @@ WebsocketProvider.prototype.on = function (type, callback) {
 
 /**
  Removes event listener
-
  @method removeListener
  @param {String} type    'notifcation', 'connect', 'error', 'end' or 'data'
  @param {Function} callback   the callback to call
@@ -327,7 +318,6 @@ WebsocketProvider.prototype.removeListener = function (type, callback) {
 
 /**
  Removes all event listeners
-
  @method removeAllListeners
  @param {String} type    'notifcation', 'connect', 'error', 'end' or 'data'
  */
@@ -359,7 +349,6 @@ WebsocketProvider.prototype.removeAllListeners = function (type) {
 
 /**
  Resets the providers, clears all callbacks
-
  @method reset
  */
 WebsocketProvider.prototype.reset = function () {
